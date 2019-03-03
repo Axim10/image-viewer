@@ -12,36 +12,39 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
-const styles = theme => ({
-    card1: {
-        maxWidth: '30%',
-         marginTop: 18,
-        margin: 'auto',
+
+
+
+
+
+export class Login extends Component {
+    styles = theme => ({
+        card1: {
+            maxWidth: '30%',
+             marginTop: 18,
+            margin: 'auto',
+           
+            padding: 50,
+        },
        
-        padding: 50,
-    },
-   
-   
-    inputLabel: {
-        '&$inputFocused': {
-            color: indigo[500],
+       
+        inputLabel: {
+            '&$inputFocused': {
+                color: indigo[500],
+            },
         },
-    },
-    logFm: {
-        width: '100%',
-        marginTop: 25,
-    },
-    inputFocused: {},
-    inputUnderline: {
-        '&:after': {
-            borderBottomColor: indigo[500],
+        logFm: {
+            width: '100%',
+            marginTop: 25,
         },
-    },
-    
-});
-
-class Login extends Component {
-
+        inputFocused: {},
+        inputUnderline: {
+            '&:after': {
+                borderBottomColor: indigo[500],
+            },
+        },
+        
+    });
     constructor() {
         super();
         sessionStorage.setItem('access-token', '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2');
