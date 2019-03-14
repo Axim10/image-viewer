@@ -70,8 +70,8 @@ class Login extends Component {
         this.state.logPwd === '' ? this.setState({passwordRequired: true}) : this.setState({passwordRequired: false});
 
         if (this.state.logUname && this.state.logPwd) {
-            let username ='user';
-            let password = '123';
+            let username ='screw_you_thanos';
+            let password = 'thaniosgay';
             let accessToken = '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2';
             if (username === this.state.logUname && password === this.state.logPwd) {
                 sessionStorage.setItem('access-token', accessToken);
