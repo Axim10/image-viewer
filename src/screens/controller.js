@@ -18,12 +18,10 @@ class Controller extends Component {
             <Router>
                 <div className='main-container'>
 
-                    {/* route to login page */}
+                
                     <Route exact path='/' render={(props) => <Login {...props} baseUrl={this.baseUrl} />} />
 
-                    {/* route to home page,
-                    if a user is not logged in and tries to go to the home page by changing the URL,
-                    then the user is taken back to the login page */}
+                  
                     <Route path='/home' render={(props) => (
                         sessionStorage.getItem('access-token') === null ? (
                             <Redirect to='/' />
@@ -36,9 +34,7 @@ class Controller extends Component {
                             )
                     )} />
 
-                    {/* route to profile page,
-                    if a user is not logged in and tries to go to the profile page by changing the URL,
-                    then the user is taken back to the login page */}
+             
                     <Route path='/profile' render={(props) => (
                         sessionStorage.getItem('access-token') === null ? (
                             <Redirect to='/' />
