@@ -11,15 +11,14 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
     constructor() {
         super();
         this.state = {
-            accessToken: localStorage.getItem('access-token'),
-            profilePictureUrl: '',
-            open: false
+            open: false,
         }
     }
 
@@ -53,16 +52,21 @@ class Header extends Component {
 
     render() {
         const {open} = this.state;
-
         return (
             <div>
                 <header className='app-header'>
 
                     {/* app logo */}
-                    <span className='app-logo'>Image Viewer</span>
+                    {this.props.redirectToHome ?
+                        <Link to='/home'>
+                            <span className='app-logo'>Image Viewer</span>
+                        </Link>
+                        :
+                        <span className='app-logo'>Image Viewer</span>
+                    }
 
                     {/* user profile icon */}
-                    {this.props.showProfilePicture === 'true' ?
+                    {this.props.showProfilePicture ?
                         <div id='profile-picture-icon'>
                             <IconButton
                                 buttonRef={node => {
@@ -84,7 +88,7 @@ class Header extends Component {
                                         <Paper>
                                             <ClickAwayListener onClickAway={this.handleClose}>
                                                 <MenuList id='menu-list'>
-                                                    {this.props.showMyAccountMenu === 'true' ?
+                                                    {this.props.showMyAccountMenu ?
                                                         <div>
                                                             <MenuItem onClick={this.myAccountHandler}>My Account</MenuItem>
                                                             <Divider />
@@ -103,7 +107,7 @@ class Header extends Component {
                     }
 
                     {/* search box */}
-                    {this.props.showSearchBox === 'true' ?
+                    {this.props.showSearchBox ?
                         <div className='search-box'>
                             <SearchIcon id='search-box-icon' />
                             <Input id='search-box-input' type='text' placeholder='Search...' disableUnderline={true} onChange={this.props.searchHandler} />
@@ -111,8 +115,7 @@ class Header extends Component {
                         : ''
                     }
 
-
-            </header>
+                </header>
             </div>
         )
     }
