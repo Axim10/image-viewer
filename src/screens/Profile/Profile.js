@@ -6,7 +6,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
-import header from './header';
 import ImageSection from './ImageSection';
 import axios from 'axios';
 import EditName from './EditName';
