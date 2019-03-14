@@ -11,14 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
-
-
-
-
-
-
-export class Login extends Component {
-    styles = theme => ({
+ const styles = theme => ({
+    
         card1: {
             maxWidth: '30%',
              marginTop: 18,
@@ -45,13 +39,15 @@ export class Login extends Component {
         },
         
     });
+
+class Login extends Component {
     constructor() {
         super();
-        sessionStorage.setItem('access-token', '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2');
+       // sessionStorage.setItem('access-token', '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2');
         // sessionStorage.removeItem('access-token');
         this.state = {
-            Username: 'screw_you_thanos',
-            Password: 'thaniosgay',
+        //    Username: 'screw_you_thanos',
+       //     Password: 'thaniosgay',
             logUname: '',
             usernameRequired: false,
             logPwd: '',
@@ -74,8 +70,11 @@ export class Login extends Component {
         this.state.logPwd === '' ? this.setState({passwordRequired: true}) : this.setState({passwordRequired: false});
 
         if (this.state.logUname && this.state.logPwd) {
-            if (this.state.Username === this.state.logUname || this.state.Password === this.state.logPwd) {
-                sessionStorage.setItem('access-token', '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2');
+            let username ='user';
+            let password = '123';
+            let accessToken = '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2';
+            if (username === this.state.logUname && password === this.state.logPwd) {
+                sessionStorage.setItem('access-token', accessToken);
                 this.props.history.push('/home');
             } else {
                 this.setState({incorrectCredentials: true})
@@ -86,9 +85,7 @@ export class Login extends Component {
     render() {
 
         const { classes } = this.props;
-
-        console.log(this.state);
-
+        
         return (
             <div>
 
@@ -112,7 +109,7 @@ export class Login extends Component {
                             <Input
                                 id='logUname'
                                 type='text'
-                                loginusername={this.state.logUname}
+                                logUname={this.state.logUname}
                                 classes={{
                                     underline: classes.inputUnderline,
                                 }}
