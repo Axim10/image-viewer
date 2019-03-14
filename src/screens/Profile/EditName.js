@@ -25,12 +25,8 @@ export default class EditName extends React.Component {
   render() {
     return (
       <div>
-        <Fab color="secondary" onClick={this.handleClickOpen} size="small" aria-label="Edit">
-        <Icon>edit_icon</Icon>
-        </Fab>
-        {/* <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Edit Name
-        </Button> */}
+          <p onClick={this.handleClickOpen} color="#00008B" size="large" aria-label="Edit"><u>Edit Name</u>
+          </p>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
