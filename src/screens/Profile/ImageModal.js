@@ -30,7 +30,7 @@ export class ImageModal extends React.Component {
 
   fetchComments = (id) =>{
     console.log("state",id)
-    const access_token="11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2 ";
+    const access_token="11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2";
     // const requestOptions = { method: 'GET', headers: { sessionStorage } };
     const url = `https://api.instagram.com/v1/media/${id}/comments?access_token=${access_token}`;
     console.log("url",url)
