@@ -10,18 +10,18 @@ class Controller extends Component {
         super();
         this.baseUrl = 'https://api.instagram.com/v1/';
         this.userInfoUrl = `${this.baseUrl}users/self/?access_token=`;
-       this.userMediaRecentUrl = `${this.baseUrl}users/self/media/recent/?access_token=`;
+        this.userMediaRecentUrl = `${this.baseUrl}users/self/media/recent/?access_token=`;
     }
 
-     render() {
+    render() {
         return (
             <Router>
                 <div className='main-container'>
 
-                
+
                     <Route exact path='/' render={(props) => <Login {...props} baseUrl={this.baseUrl} />} />
 
-                  
+
                     <Route path='/home' render={(props) => (
                         sessionStorage.getItem('access-token') === null ? (
                             <Redirect to='/' />
@@ -34,7 +34,7 @@ class Controller extends Component {
                             )
                     )} />
 
-             
+
                     <Route path='/profile' render={(props) => (
                         sessionStorage.getItem('access-token') === null ? (
                             <Redirect to='/' />
