@@ -97,8 +97,7 @@ class Home extends Component {
         let that = this;
 
         // Get information about the owner of the access_token.
-        let dataUserInfo = null;
-
+       
         axios.get(`https://api.instagram.com/v1/users/self/?access_token=11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2`).then((response) => {
 
             that.setState({
@@ -106,7 +105,7 @@ class Home extends Component {
             })
         })
 
-        let dataUserPosts = null;
+     
 
         axios.get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${localStorage.getItem('access-token')}`).then((response) => {
             let likesState = {};
