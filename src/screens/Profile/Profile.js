@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../../common/header/Header';
-import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import Icon from '@material-ui/core/Icon';
 import ImageSection from './ImageSection';
 import axios from 'axios';
 import EditName from './EditName';
 import './profile.css';
-import { timingSafeEqual } from 'crypto';
 import { ImageModal } from './ImageModal';
 
 export class Profile extends Component {
