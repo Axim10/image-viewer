@@ -22,10 +22,15 @@ export default class EditName extends React.Component {
     this.setState({ open: false });
   };
 
+  
+
   render() {
     return (
+
+      
+
       <div>
-          <p onClick={this.handleClickOpen} color="#00008B" size="large" aria-label="Edit"><u>Edit Name</u>
+          <p onClick={this.handleClickOpen}  color="#00008B" size="large" ><u>Edit Name</u>
           </p>
         <Dialog
           open={this.state.open}
