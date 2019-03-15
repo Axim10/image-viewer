@@ -11,8 +11,7 @@ import { Input } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import axios from 'axios';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+
 
 
 const _ = require('lodash');
@@ -129,7 +128,7 @@ const{data, comments} = this.state;
                             </Grid>
                             <Grid item xs={12}>
                                 <List component="nav">
-                                {/* {_.map(comments,"text",(text)=>{<ListItem children={text}/>})}  */}
+                              
                                 </List>
                             </Grid>
                             <Grid item xs={12}>
