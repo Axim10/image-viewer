@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Home.css';
+import './home.css';
 import Header from '../../common/header/Header';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -20,6 +20,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import axios from "axios"
 
 const styles = theme => ({
     cardsGridList: {
@@ -80,6 +81,9 @@ class Home extends Component {
 
     constructor() {
         super();
+        sessionStorage.removeItem('access-token');
+        localStorage.setItem('access-token', '11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2');
+
         this.state = {
             userPosts: [],
             userInfo: {},
@@ -94,41 +98,31 @@ class Home extends Component {
 
         // Get information about the owner of the access_token.
         let dataUserInfo = null;
-        let xhrUserInfo = new XMLHttpRequest();
-        xhrUserInfo.addEventListener('readystatechange', function () {
-            if (this.readyState === 4) {
-                that.setState({
-                    userInfo: JSON.parse(this.responseText).data
-                })
-            }
+
+        axios.get(`https://api.instagram.com/v1/users/self/?access_token=11222840801.f3fe1ea.54bee85b35d045aabcc9580f743c0dc2`).then((response) => {
+
+            that.setState({
+                userInfo: response.data.data
+            })
         })
 
-        xhrUserInfo.open('GET', `${this.props.userInfoUrl}${this.props.accessToken}`);
-        xhrUserInfo.send(dataUserInfo);
-
-        // Get the most recent media published by the owner of the access_token.
         let dataUserPosts = null;
-        let xhrUserPosts = new XMLHttpRequest();
-        xhrUserPosts.addEventListener('readystatechange', function () {
-            if (this.readyState === 4) {
-                let likesState = {};
-                let userComments = {};
-                let data = JSON.parse(this.responseText).data;
-                for (let i = 0; i < data.length; i++) {
-                    likesState[data[i]['id']] = false
-                    userComments[data[i]['id']] = { 'added': [], 'toAdd': '' }
-                }
-                that.setState({
-                    userPosts: data,
-                    filteredUserPosts: data,
-                    likesState: likesState,
-                    userComments: userComments
-                });
-            }
-        });
 
-        xhrUserPosts.open('GET', `${this.props.userMediaRecentUrl}${this.props.accessToken}`);
-        xhrUserPosts.send(dataUserPosts);
+        axios.get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${localStorage.getItem('access-token')}`).then((response) => {
+            let likesState = {};
+            let userComments = {};
+            let data = response.data.data
+            for (let i = 0; i < data.length; i++) {
+                likesState[data[i]['id']] = false
+                userComments[data[i]['id']] = { 'added': [], 'toAdd': '' }
+            }
+            that.setState({
+                userPosts: data,
+                filteredUserPosts: data,
+                likesState: likesState,
+                userComments: userComments
+            });
+        })
     }
 
     // takes unix timestamp and returns date string in 'dd/mm/yyyy HH:MM:SS' format
