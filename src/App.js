@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import Home from "./screens/home/home";
 import Login from "./screens/login/Login";
-import Profile from "./screens/profile/Profile";
+import Profile from "./screens/Profile/Profile";
 import "./App.css";
 
 class App extends Component {
